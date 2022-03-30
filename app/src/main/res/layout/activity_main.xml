@@ -33,7 +33,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/alert_action_button" />
-
+    <Button
+        android:id="@+id/snackbar_action_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/snackbar_action"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/alert_layout_button" />
+    <Button
+        android:id="@+id/snackbar_indefinite_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="snackbar indefinite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/snackbar_action_button" />
 
     <TextView
         android:id="@+id/textView"

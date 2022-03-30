@@ -1,9 +1,7 @@
 package binar.academy.chapterfourth
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -15,6 +13,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnDialogAction: Button
     private lateinit var btnDialogLayout: Button
     private lateinit var btnCloseLayout: Button
+    private lateinit var snackActionButton: Button
+    private lateinit var snackIndefiniteButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,9 +22,11 @@ class MainActivity : AppCompatActivity() {
         btnDialogStandart = findViewById(R.id.alert_standart_button)
         btnDialogAction = findViewById(R.id.alert_action_button)
         btnDialogLayout = findViewById(R.id.alert_layout_button)
+        snackActionButton = findViewById(R.id.snackbar_action_button)
+        snackIndefiniteButton = findViewById(R.id.snackbar_indefinite_button)
 
         btnDialogStandart.setOnClickListener {
-            dialogStandart()
+            dialogStandards()
         }
         btnDialogAction.setOnClickListener {
             dialogAction()
@@ -32,9 +34,15 @@ class MainActivity : AppCompatActivity() {
         btnDialogLayout.setOnClickListener {
             dialogLayout()
         }
+        snackActionButton.setOnClickListener {
+            snackActionSample()
+        }
+        snackIndefiniteButton.setOnClickListener {
+            snackIndefiniteSample()
+        }
     }
 
-    private fun dialogStandart() {
+    private fun dialogStandards() {
         val dialog = AlertDialog.Builder(this)
         dialog.setTitle("Dialog Cancelable")
         dialog.setMessage("Dialog Standart bisa ditutup dengan mengklik bagian luar dialog")
@@ -48,14 +56,14 @@ class MainActivity : AppCompatActivity() {
         dialog.setIcon(R.mipmap.ic_launcher)
 
         dialog.setCancelable(false)
-        dialog.setPositiveButton("Positive Button"){dialogInterface, p1 ->
+        dialog.setPositiveButton("Positive Button"){ _, _ ->
             Snackbar.make(findViewById(R.id.parentlayout),"Positive Button CLicked",Snackbar.LENGTH_LONG).show()
         }
-        dialog.setNegativeButton("Negative Button"){dialogInterface, p1->
-            Toast.makeText(this,"Negative Button CLicked",Toast.LENGTH_LONG).show()
+        dialog.setNegativeButton("Negative Button"){ _, _ ->
+            Snackbar.make(findViewById(R.id.parentlayout),"Negative Button CLicked",Snackbar.LENGTH_LONG).show()
         }
-        dialog.setNeutralButton("Neutral Button"){dialogInterface, p1->
-            Toast.makeText(this,"Neutral Button CLicked",Toast.LENGTH_LONG).show()
+        dialog.setNeutralButton("Neutral Button"){ _, _ ->
+            Snackbar.make(findViewById(R.id.parentlayout),"Neutral Button CLicked",Snackbar.LENGTH_LONG).show()
         }
         dialog.show()
     }
@@ -72,5 +80,21 @@ class MainActivity : AppCompatActivity() {
             dialog.dismiss()
         }
         dialog.show()
+    }
+
+    private fun snackActionSample(){
+        Snackbar.make(findViewById(R.id.parentlayout),"Ini Snackbar dengan Action", Snackbar.LENGTH_LONG)
+            .setAction("Text Action"){
+                Toast.makeText(this, "Toast dari Action Snackbar",Toast.LENGTH_LONG).show()
+            }
+            .show()
+    }
+
+    private fun snackIndefiniteSample(){
+        val snackBar = Snackbar.make(findViewById(R.id.parentlayout),"Ini snackbar Indefinite. Gak bakal pergi kalo gak klik Dismiss/ ada Snackbar lainnya", Snackbar.LENGTH_INDEFINITE)
+        snackBar.setAction("Dismiiss"){
+            snackBar.dismiss()
+        }
+        snackBar.show()
     }
 }
