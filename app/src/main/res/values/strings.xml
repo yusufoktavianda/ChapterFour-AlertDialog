@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ChapterFourth</string>
+    <string name="alert_custom_layout">Alert Custom Layout</string>
+    <string name="alert_standart">Alert Standart</string>
+    <string name="alert_action">Alert Action</string>
+    <string name="chapter_fourth">Chapter Fourth</string>
+    <string name="ini_adalah_custom_alert_dialog">Ini adalah Custom Alert Dialog</string>
+    <string name="close">Close</string>
+</resources>
