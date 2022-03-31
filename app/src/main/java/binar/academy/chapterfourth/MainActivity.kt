@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnCloseLayout: Button
     private lateinit var snackActionButton: Button
     private lateinit var snackIndefiniteButton: Button
+    private lateinit var btnDialogFragmentButton: Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         btnDialogLayout = findViewById(R.id.alert_layout_button)
         snackActionButton = findViewById(R.id.snackbar_action_button)
         snackIndefiniteButton = findViewById(R.id.snackbar_indefinite_button)
+        btnDialogFragmentButton = findViewById(R.id.alert_dialog_fragment_button)
 
         btnDialogStandart.setOnClickListener {
             dialogStandards()
@@ -39,6 +42,9 @@ class MainActivity : AppCompatActivity() {
         }
         snackIndefiniteButton.setOnClickListener {
             snackIndefiniteSample()
+        }
+        btnDialogFragmentButton.setOnClickListener {
+            alertDialogFragment()
         }
     }
 
@@ -76,8 +82,8 @@ class MainActivity : AppCompatActivity() {
 
         val dialog = dialogBuilder.create()
         btnCloseLayout.setOnClickListener {
-            Toast.makeText(this,"Custom Dialog Closed",Toast.LENGTH_LONG).show()
             dialog.dismiss()
+            Toast.makeText(this,"Custom Dialog Closed",Toast.LENGTH_LONG).show()
         }
         dialog.show()
     }
@@ -96,5 +102,10 @@ class MainActivity : AppCompatActivity() {
             snackBar.dismiss()
         }
         snackBar.show()
+    }
+
+    private fun alertDialogFragment(){
+        val dialogFragment = AlertDialogFragment()
+        dialogFragment.show(supportFragmentManager,"tag")
     }
 }

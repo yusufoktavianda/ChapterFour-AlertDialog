@@ -7,4 +7,6 @@
     <string name="ini_adalah_custom_alert_dialog">Ini adalah Custom Alert Dialog</string>
     <string name="close">Close</string>
     <string name="snackbar_action">Snackbar Action</string>
+    <string name="alert_dialog_fragment">alert dialog fragment</string>
+    <string name="enter_your_name">Enter your name</string>
 </resources>
